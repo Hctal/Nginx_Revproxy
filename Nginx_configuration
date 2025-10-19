@@ -1,0 +1,14 @@
+# Create a new configuration file for the reverse proxy
+sudo nano /etc/nginx/sites-available/proxy-app
+
+# Disable the default Nginx site
+sudo unlink /etc/nginx/sites-enabled/default
+
+# Enable your new configuration with a symbolic link
+sudo ln -s /etc/nginx/sites-available/proxy-app /etc/nginx/sites-enabled/
+
+# Test the Nginx configuration for syntax errors
+sudo nginx -t
+
+# Reload Nginx to apply the new configuration
+sudo systemctl reload nginx
