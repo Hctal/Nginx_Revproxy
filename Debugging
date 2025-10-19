@@ -1,0 +1,9 @@
+# Test the backend applications directly with curl
+curl http://localhost:8080
+curl http://localhost:8081
+
+# View the Nginx access log in real-time
+sudo tail -f /var/log/nginx/access.log
+
+# View the Nginx error log in real-time
+sudo tail -f /var/log/nginx/error.log
