@@ -1,0 +1,30 @@
+# /etc/nginx/sites-available/proxy-app.
+
+server {
+    # Listen on the standard HTTP port
+    listen 80;
+
+    # Set the server name (localhost in this case)
+    server_name localhost;
+
+    # Configuration for App 1, routing requests that start with /app1/
+    location /app1/ {
+        # Pass the request to the backend server on port 8080
+        # The trailing slash ensures the URI path is correctly rewritten for the backend
+        proxy_pass http://localhost:8080/;
+
+        # Forward important headers to the backend
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # Configuration for App 2, routing requests that start with /app2/
+    location /app2/ {
+        # Pass the request to the backend server on port 8081
+        proxy_pass http://localhost:8081/;
+
+        # Forward important headers
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
