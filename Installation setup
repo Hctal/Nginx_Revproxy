@@ -1,0 +1,29 @@
+# Update package list and install Nginx
+sudo apt update
+sudo apt install nginx -y
+
+# Check the status of Nginx
+sudo systemctl status nginx
+
+# Create project directories
+mkdir ~/app1
+mkdir ~/app2
+
+# Create index.html files for both apps
+echo "<h1>Hello from App 1!</h1>" > ~/app1/index.html
+echo "<h1>Hello from App 2!</h1>" > ~/app2/index.html
+
+# Start Python servers for both applications
+cd ~/app1
+python3 -m http.server 8080 > /dev/null &
+cd ~/app2
+python3 -m http.server 8081 > /dev/null &
+
+# Check running jobs for port mismatches
+jobs
+
+# Stop specific jobs if needed (e.g., job 2)
+kill %2
+
+# Use killall to stop all Python processes
+killall python3
