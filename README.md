@@ -1,4 +1,3 @@
-# Nginx_Revproxy
 # Nginx Reverse Proxy with Python Backends
 
 ## 📜 Project Description
